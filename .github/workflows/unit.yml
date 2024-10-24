@@ -16,13 +16,16 @@ jobs:
       - name: Sleep
         uses: jakejarvis/wait-action@master
         with:
-          time: '60s'
+          time: '20s'
 
       - name: Check running containers
         run: docker ps
 
       - name: Run unit tests
         run: ./test.sh crudx
+
+      - name: Check coverage if files exists
+        run: (ls ./coverage/packages/crudx/clove.xml && echo yes) || echo no
 
       #- name: Upload coverage reports to Codacy
       #  uses: codacy/codacy-coverage-reporter-action@v1
