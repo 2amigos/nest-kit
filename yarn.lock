@@ -3,7 +3,7 @@
 
 
 "@2amtech/crudx@./packages/crudx":
-  version "1.0.0"
+  version "1.0.1"
   resolved "file:packages/crudx"
   dependencies:
     "@nestjs/common" "^10.1.3"

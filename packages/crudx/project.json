@@ -49,12 +49,14 @@
         "runInBand": true,
         "jestConfig": "packages/crudx/jest.config.ts",
         "passWithNoTests": true,
-        "testPathPattern": ["tests/*"]
+        "testPathPattern": ["tests/*"],
+        "codeCoverage":  true
       },
       "configurations": {
         "ci": {
           "ci": true,
-          "codeCoverage": true
+          "codeCoverage": true,
+          "coverage": true
         }
       }
     }
