@@ -1,0 +1,63 @@
+{
+  "name": "crudx",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/crudx/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/crudx",
+        "main": "packages/crudx/src/index.ts",
+        "tsConfig": "packages/crudx/tsconfig.lib.json",
+        "assets": ["packages/crudx/*.md", "packages/crudx/.npmignore"]
+      }
+    },
+    "build-npm": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/crudx",
+        "main": "packages/crudx/src/index.ts",
+        "tsConfig": "packages/crudx/tsconfig.lib.json",
+        "assets": [
+          "packages/crudx/README.md",
+          "packages/crudx/LICENSE",
+          "packages/crudx/.npmignore"
+        ]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs crudx",
+      "dependsOn": ["build-npm"]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/crudx/**/*.ts",
+          "packages/crudx/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "runInBand": true,
+        "jestConfig": "packages/crudx/jest.config.ts",
+        "passWithNoTests": true,
+        "testPathPattern": ["tests/*"]
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

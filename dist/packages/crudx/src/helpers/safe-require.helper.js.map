@@ -1,0 +1,1 @@
+{"version":3,"file":"safe-require.helper.js","sourceRoot":"","sources":["../../../../../packages/crudx/src/helpers/safe-require.helper.ts"],"names":[],"mappings":";;;AAAA,SAAgB,WAAW,CAAU,IAAY,EAAE,MAAgB;IACjE,IAAI;QACF,OAAO,MAAM,CAAC,CAAC,CAAC,MAAM,EAAE,CAAC,CAAC,CAAC,OAAO,CAAC,IAAI,CAAC,CAAC;KAC1C;IAAC,OAAO,CAAC,EAAE;QACV,OAAO,IAAI,CAAC;KACb;AACH,CAAC;AAND,kCAMC"}

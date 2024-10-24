@@ -1,0 +1,55 @@
+services:
+  2am-nestkit: 
+    image: node:20
+    user: "root"
+    working_dir: /home/node/app
+
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - .:/home/node/app
+    networks:
+      - nestkit
+    depends_on:
+      - app-mysql
+    command: >
+      bash -c "cp .env.docker.example .env.testing && npm install && npm i -g @nestjs/cli && tail -f /dev/null"
+    tty: true
+    restart: none
+    ports:
+      - '3000:3000'
+  app-mysql:
+    image: 'mysql/mysql-server:8.0'
+    restart: always
+    container_name: app-mysql
+    environment:
+      MYSQL_DATABASE: 'nestkit'
+      MYSQL_USER: '2am'
+      MYSQL_PASSWORD: '2am-nestkit'
+      MYSQL_ROOT_PASSWORD: '2am-nestkit'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    command: |
+      mysqld --default-authentication-plugin=mysql_native_password
+    ports:
+      - '3307:3306'
+    volumes:
+      - 'mysql:/var/lib64/mysql'
+    expose:
+      - '3307'
+    networks:
+      - nestkit
+    healthcheck:
+      test:
+       - CMD
+       - mysqladmin
+       - ping
+       - '-p${MYSQL_ROOT_PASSWORD}'
+      retries: 3    
+      timeout: 5s
+volumes:
+  mysql:
+    driver: local
+  
+networks:
+  nestkit:
+    driver: bridge

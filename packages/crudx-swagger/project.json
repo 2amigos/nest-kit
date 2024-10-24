@@ -1,0 +1,68 @@
+{
+  "name": "crudx-swagger",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/crudx-swagger/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/crudx-swagger",
+        "tsConfig": "packages/crudx-swagger/tsconfig.lib.json",
+        "packageJson": "packages/crudx-swagger/package.json",
+        "main": "packages/crudx-swagger/src/index.ts",
+        "assets": [
+          "packages/crudx-swagger/*.md",
+          "packages/crudx-swagger/.npmignore"
+        ]
+      }
+    },
+    "build-npm": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/crudx-swagger",
+        "tsConfig": "packages/crudx-swagger/tsconfig.lib.json",
+        "packageJson": "packages/crudx-swagger/package.json",
+        "main": "packages/crudx-swagger/src/index.ts",
+        "assets": [
+          "packages/crudx-swagger/README.md",
+          "packages/crudx-swagger/LICENSE",
+          "packages/crudx-swagger/.npmignore"
+        ]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs crudx-swagger",
+      "dependsOn": ["build-npm"]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/crudx-swagger/**/*.ts",
+          "packages/crudx-swagger/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "runInBand": true,
+        "jestConfig": "packages/crudx-swagger/jest.config.ts",
+        "passWithNoTests": true,
+        "testPathPattern": ["tests/*"]
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

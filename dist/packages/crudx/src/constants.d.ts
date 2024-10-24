@@ -1,0 +1,10 @@
+export declare const REQUEST_DELIM: string;
+export declare const REQUEST_DELIM_STR: string;
+export declare const REQUEST_PREFIX_EXTRA: string;
+export declare const FEATURE_NAME_METADATA: string;
+export declare const ACTION_NAME_METADATA: string;
+export declare const OVERRIDE_METHOD_METADATA: string;
+export declare const PARSED_BODY_METADATA: string;
+export declare const PARSED_CRUD_REQUEST_KEY: string;
+export declare const CRUD_OPTIONS_METADATA: string;
+export declare const CRUD_AUTH_OPTIONS_METADATA: string;

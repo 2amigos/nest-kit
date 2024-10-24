@@ -1,0 +1,324 @@
+import { get, isNil, isObject, isString, isUndefined } from "lodash";
+
+import { stringify } from "qs";
+
+import {
+  CreateQueryParams,
+  CustomOperators,
+  ParamsNamesMap,
+  RequestQueryBuilderOptions,
+} from "../interfaces";
+
+import {
+  QueryFields,
+  QueryFilter,
+  QueryFilterArr,
+  QueryJoin,
+  QueryJoinArr,
+  QuerySort,
+  QuerySortArr,
+  SCondition,
+} from "../types";
+
+import {
+  hasValue,
+  isArrayFull,
+  validateCondition,
+  validateFields,
+  validateJoin,
+  validateNumeric,
+  validateSort,
+} from "../helpers";
+
+import {
+  REQUEST_DELIM,
+  REQUEST_DELIM_STR,
+  REQUEST_PREFIX_EXTRA,
+} from "../constants";
+
+export class QueryBuilderService {
+  constructor() {
+    this.setParamNames();
+  }
+
+  private static _options: RequestQueryBuilderOptions = {
+    delim: REQUEST_DELIM,
+    delimStr: REQUEST_DELIM_STR,
+    paramNamesMap: <ParamsNamesMap>{
+      fields: ["fields", "select"],
+      search: "s",
+      filter: "filter",
+      or: "or",
+      join: "join",
+      sort: "sort",
+      limit: ["limit", "per_page"],
+      offset: "offset",
+      page: "page",
+      cache: "cache",
+      includeDeleted: "include_deleted",
+      extra: REQUEST_PREFIX_EXTRA,
+    },
+  };
+  private paramNames: {
+    [key in keyof ParamsNamesMap as string]: string;
+  } = {};
+  public queryObject: { [key: string]: any } = {};
+  public queryString: string = "";
+
+  static setOptions(options: RequestQueryBuilderOptions) {
+    QueryBuilderService._options = {
+      ...QueryBuilderService._options,
+      ...options,
+      paramNamesMap: {
+        ...QueryBuilderService._options.paramNamesMap,
+        ...(options.paramNamesMap ? options.paramNamesMap : {}),
+      },
+    };
+  }
+
+  static getOptions(): RequestQueryBuilderOptions {
+    return QueryBuilderService._options;
+  }
+
+  static create(
+    params?: CreateQueryParams,
+    customOperators: CustomOperators = {}
+  ): QueryBuilderService {
+    const qb: QueryBuilderService = new QueryBuilderService();
+    return isObject(params)
+      ? qb.createFromParams(<CreateQueryParams>params, customOperators)
+      : qb;
+  }
+
+  get options(): RequestQueryBuilderOptions {
+    return QueryBuilderService._options;
+  }
+
+  setParamNames(): void {
+    if (QueryBuilderService._options.paramNamesMap) {
+      Object.keys(QueryBuilderService._options.paramNamesMap).forEach(
+        (key: string): void => {
+          const name = get(QueryBuilderService._options.paramNamesMap, key);
+          this.paramNames[key] = isString(name)
+            ? (name as string)
+            : (name[0] as string);
+        }
+      );
+    }
+  }
+
+  query(encode = true): string {
+    if (this.queryObject[this.paramNames["search"]]) {
+      this.queryObject[this.paramNames["filter"]] = undefined;
+      this.queryObject[this.paramNames["or"]] = undefined;
+    }
+    this.queryString = stringify(this.queryObject, { encode });
+    return this.queryString;
+  }
+
+  select(fields?: QueryFields): this {
+    if (!isNil(fields) && isArrayFull(fields)) {
+      validateFields(fields);
+      this.queryObject[this.paramNames["fields"]] = fields.join(
+        this.options.delimStr
+      );
+    }
+    return this;
+  }
+
+  search(s?: SCondition) {
+    if (!isNil(s) && isObject(s)) {
+      this.queryObject[this.paramNames["search"]] = JSON.stringify(s);
+    }
+    return this;
+  }
+
+  setFilter(
+    f:
+      | QueryFilter
+      | QueryFilterArr
+      | Array<QueryFilter | QueryFilterArr>
+      | undefined,
+    customOperators: CustomOperators = {}
+  ): this {
+    this.setCondition(f, "filter", customOperators);
+    return this;
+  }
+
+  setOr(
+    f:
+      | QueryFilter
+      | QueryFilterArr
+      | Array<QueryFilter | QueryFilterArr>
+      | undefined,
+    customOperators: CustomOperators = {}
+  ): this {
+    this.setCondition(f, "or", customOperators);
+    return this;
+  }
+
+  setJoin(
+    j: QueryJoin | QueryJoinArr | Array<QueryJoin | QueryJoinArr> | undefined
+  ): this {
+    if (!isNil(j)) {
+      const param: string = this.checkQueryObjectParam("join", []);
+      this.queryObject[param] = [
+        ...this.queryObject[param],
+        ...(Array.isArray(j) && !isString(j[0])
+          ? (j as Array<QueryJoin | QueryJoinArr>).map((o) => this.addJoin(o))
+          : [this.addJoin(j as QueryJoin | QueryJoinArr)]),
+      ];
+    }
+    return this;
+  }
+
+  sortBy(
+    s: QuerySort | QuerySortArr | Array<QuerySort | QuerySortArr> | undefined
+  ): this {
+    if (!isNil(s)) {
+      const param = this.checkQueryObjectParam("sort", []);
+      this.queryObject[param] = [
+        ...this.queryObject[param],
+        ...(Array.isArray(s) && !isString(s[0])
+          ? (s as Array<QuerySort | QuerySortArr>).map((o) => this.addSortBy(o))
+          : [this.addSortBy(s as QuerySort | QuerySortArr)]),
+      ];
+    }
+    return this;
+  }
+
+  setLimit(n: number | undefined): this {
+    this.setNumeric(n, "limit");
+    return this;
+  }
+
+  setOffset(n: number | undefined): this {
+    this.setNumeric(n, "offset");
+    return this;
+  }
+
+  setPage(n: number | undefined): this {
+    this.setNumeric(n, "page");
+    return this;
+  }
+
+  resetCache(): this {
+    this.setNumeric(0, "cache");
+    return this;
+  }
+
+  setIncludeDeleted(n: number | undefined): this {
+    this.setNumeric(n, "includeDeleted");
+    return this;
+  }
+
+  cond(
+    f: QueryFilter | QueryFilterArr,
+    cond: "filter" | "or" | "search" = "search",
+    customOperators: CustomOperators = {}
+  ): string {
+    const filter = Array.isArray(f)
+      ? { field: f[0], operator: f[1], value: f[2] }
+      : f;
+    validateCondition(filter, cond, customOperators);
+    const d = this.options.delim;
+
+    return (
+      filter.field +
+      d +
+      filter.operator +
+      (hasValue(filter.value) ? d + filter.value : "")
+    );
+  }
+
+  private addJoin(j: QueryJoin | QueryJoinArr): string {
+    const join: QueryJoin = Array.isArray(j)
+      ? { field: j[0], select: j[1] }
+      : j;
+    validateJoin(join);
+    const d: string | undefined = this.options.delim;
+    const ds: string | undefined = this.options.delimStr;
+
+    return (
+      join.field +
+      (isArrayFull(join.select) ? d + (join.select?.join(ds) ?? "") : "")
+    );
+  }
+
+  private addSortBy(s: QuerySort | QuerySortArr): string {
+    const sort: QuerySort = Array.isArray(s) ? { field: s[0], order: s[1] } : s;
+    validateSort(sort);
+    const ds: string | undefined = this.options.delimStr;
+
+    return sort.field + ds + sort.order;
+  }
+
+  private createFromParams(
+    params: CreateQueryParams,
+    customOperators: CustomOperators
+  ): this {
+    this.select(params.fields);
+    this.search(params.search);
+    this.setFilter(params.filter, customOperators);
+    this.setOr(params.or, customOperators);
+    this.setJoin(params.join);
+    this.setLimit(params.limit);
+    this.setOffset(params.offset);
+    this.setPage(params.page);
+    this.sortBy(params.sort);
+    if (params.resetCache) {
+      this.resetCache();
+    }
+    this.setIncludeDeleted(params.includeDeleted);
+    return this;
+  }
+
+  private checkQueryObjectParam(
+    cond: keyof ParamsNamesMap,
+    defaults: any
+  ): string {
+    const param = this.paramNames[cond];
+    if (isNil(this.queryObject[param]) && !isUndefined(defaults)) {
+      this.queryObject[param] = defaults;
+    }
+    return param;
+  }
+
+  private setCondition(
+    f:
+      | QueryFilter
+      | QueryFilterArr
+      | Array<QueryFilter | QueryFilterArr>
+      | undefined,
+    cond: "filter" | "or",
+    customOperators: CustomOperators
+  ): void {
+    if (!isNil(f)) {
+      const param = this.checkQueryObjectParam(cond, []);
+      this.queryObject[param] = [
+        ...this.queryObject[param],
+        ...(Array.isArray(f) && !isString(f[0])
+          ? (f as Array<QueryFilter | QueryFilterArr>).map((o) =>
+              this.cond(o, cond, customOperators)
+            )
+          : [
+              this.cond(
+                f as QueryFilter | QueryFilterArr,
+                cond,
+                customOperators
+              ),
+            ]),
+      ];
+    }
+  }
+
+  private setNumeric(
+    n: number | undefined,
+    cond: "limit" | "offset" | "page" | "cache" | "includeDeleted"
+  ): void {
+    if (!isNil(n)) {
+      validateNumeric(n, cond);
+      this.queryObject[this.paramNames[cond]] = n;
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "name": "crudx-swagger-demo",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/crudx-swagger/demo/crudx-swagger-demo/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/packages/crudx-swagger/demo/crudx-swagger-demo",
+        "main": "packages/crudx-swagger/demo/crudx-swagger-demo/src/main.ts",
+        "tsConfig": "packages/crudx-swagger/demo/crudx-swagger-demo/tsconfig.app.json",
+        "assets": ["packages/crudx-swagger/demo/crudx-swagger-demo/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "packages/crudx-swagger/demo/crudx-swagger-demo/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "crudx-swagger-demo:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "crudx-swagger-demo:build:development"
+        },
+        "production": {
+          "buildTarget": "crudx-swagger-demo:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/crudx-swagger/demo/crudx-swagger-demo/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/crudx-swagger/demo/crudx-swagger-demo/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
