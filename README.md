@@ -1,5 +1,7 @@
 # NestKit
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9d6672e9092546c89173a030f5133e4a)](https://app.codacy.com/gh/2amigos/nest-kit?utm_source=github.com&utm_medium=referral&utm_content=2amigos/nest-kit&utm_campaign=Badge_Grade)
+
 <p align="center">
   <img src="./resource/nestkit-logo.jpeg">
 </p>
