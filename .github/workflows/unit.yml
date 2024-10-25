@@ -3,6 +3,11 @@ on: [push]
 
 jobs:
   test:
+  
+    strategy:
+      matrix:
+        PROJECT_NAME: [crudx]
+
     name: Crudx Jest Tests
     runs-on: ubuntu-latest
 
@@ -22,13 +27,13 @@ jobs:
         run: docker ps
 
       - name: Run unit tests
-        run: ./test.sh crudx
+        run: ./test.sh ${{ matrix.PROJECT_NAME }}
 
       - name: Check coverage if files exists
-        run: (ls ./coverage/packages/crudx/clover.xml && echo yes) || echo no
+        run: (ls ./coverage/packages/${{ matrix.PROJECT_NAME }}/clover.xml && echo yes) || echo no
 
-      #- name: Upload coverage reports to Codacy
-      #  uses: codacy/codacy-coverage-reporter-action@v1
-      #  with:
-      #    project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-      #    coverage-reports: /coverage/packages/crudx/coverage.xml
+      - name: Upload coverage reports to Codacy
+        uses: codacy/codacy-coverage-reporter-action@v1
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: ./coverage/packages/${{ matrix.PROJECT_NAME }}/clover.xml
