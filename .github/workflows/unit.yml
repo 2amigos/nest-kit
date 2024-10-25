@@ -27,8 +27,8 @@ jobs:
       - name: Check coverage if files exists
         run: (ls ./coverage/packages/crudx/clover.xml && echo yes) || echo no
 
-      #- name: Upload coverage reports to Codacy
-      #  uses: codacy/codacy-coverage-reporter-action@v1
-      #  with:
-      #    project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-      #    coverage-reports: /coverage/packages/crudx/coverage.xml
+      - name: Upload coverage reports to Codacy
+        uses: codacy/codacy-coverage-reporter-action@v1
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: /coverage/packages/crudx/coverage.xml
