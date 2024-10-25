@@ -4,6 +4,11 @@
   <img src="./resource/nestkit-logo.jpeg">
 </p>
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/906c5ca116484d76a42402c95482879d)](https://app.codacy.com/gh/2amigos/nest-kit/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/906c5ca116484d76a42402c95482879d)](https://app.codacy.com/gh/2amigos/nest-kit/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
+[![unit tests](https://github.com/2amigos/nest-kit/actions/workflows/unit.yml/badge.svg?branch=main)](https://github.com/2amigos/nest-kit/actions/workflows/unit.yml)
+[![All Contributors](https://img.shields.io/github/all-contributors/2amigos/nest-kit?color=ee8449&style=flat-square)](#contributors)
+
 Nest-kit comes from the heart of [2am.tech](https://2am.tech), a software development company with a deep passion for open source. We are committed to giving back to the community by making the tools we've developed to meet our own internal needs available to everyone.
 
 NestKit is a monorepo project, meant to provide a comprehensive set of libraries for building projects with [nestjs](https://nestjs.com/). We hope you will find it useful!
@@ -97,19 +102,16 @@ $ yarn nx run {targe-project}:serve # it will serve the target demo app at http:
 $ yarn nx run crudx-demo:serve
 ```
 
-# Contributors
+## Contributors
 
-Thanks goes to these amazing people:
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
 
-<!-- automate it when we move to github, here as a draft atm -->
-<table>
-  <tr>
-    <td align="center"><a href="https://github.com/2amjsouza"><img src="https://avatars.githubusercontent.com/u/142612126?v=4" width="100px;" alt=""/><br /><sub><b>2amjsouza</b></sub></a></td>
-    <td align="center"><a href="https://github.com/tonydspaniard"><img src="https://avatars.githubusercontent.com/u/566016?v=4" width="100px;" alt=""/><br /><sub><b>Antonio</b></sub></a></td>
-    <td align="center"><a href="https://github.com/ArekX"><img src="https://avatars.githubusercontent.com/u/4344776?v=4" width="100px;" alt=""/><br /><sub><b>ArekX</b></sub></a></td>
-  </tr>
-  <tr>
-</table>
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 <blockquote>
     <a href="https://2am.tech"><img src="http://www.gravatar.com/avatar/55363394d72945ff7ed312556ec041e0.png"></a><br>
