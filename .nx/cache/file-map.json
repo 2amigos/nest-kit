@@ -65,6 +65,217 @@
   },
   "nxJsonPlugins": [],
   "projectFileMap": {
+    "@nest-kit/source": [
+      {
+        "file": ".all-contributorsrc",
+        "hash": "13494454873972158580"
+      },
+      {
+        "file": ".editorconfig",
+        "hash": "5443105041930014821"
+      },
+      {
+        "file": ".env.docker.example",
+        "hash": "3904083697395928954"
+      },
+      {
+        "file": ".env.example",
+        "hash": "12804018129142812533"
+      },
+      {
+        "file": ".env.testing",
+        "hash": "3904083697395928954"
+      },
+      {
+        "file": ".eslintignore",
+        "hash": "7663861978715868291"
+      },
+      {
+        "file": ".eslintrc.json",
+        "hash": "15299346859160131793"
+      },
+      {
+        "file": ".github/workflows/unit.yml",
+        "hash": "16309062679692272501"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "11799024793684374609"
+      },
+      {
+        "file": ".npmignore",
+        "hash": "11799024793684374609"
+      },
+      {
+        "file": ".pretierignore",
+        "hash": "7062417114858279524"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "8865097869854018350"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "15753941481085060538"
+      },
+      {
+        "file": ".verdaccio/config.yml",
+        "hash": "3445400987408887114"
+      },
+      {
+        "file": ".yarn/releases/yarn-1.22.19.cjs",
+        "hash": "17226688287211478531"
+      },
+      {
+        "file": ".yarnrc",
+        "hash": "6414922622098367488"
+      },
+      {
+        "file": "CONTRIBUTING.md",
+        "hash": "16062194028782084971"
+      },
+      {
+        "file": "LICENSE",
+        "hash": "12823936132319119988"
+      },
+      {
+        "file": "README.md",
+        "hash": "7598864217358290861"
+      },
+      {
+        "file": "docker-compose.yml",
+        "hash": "16820747357368207960"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "2392540309333994723",
+        "deps": [
+          "npm:@nx/jest"
+        ]
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "14932722313705501266",
+        "deps": [
+          "npm:@nx/jest"
+        ]
+      },
+      {
+        "file": "jsconfig.json",
+        "hash": "18390160540452569316"
+      },
+      {
+        "file": "nest-kit.code-workspace",
+        "hash": "4850645847513818551"
+      },
+      {
+        "file": "nx.json",
+        "hash": "16681682195680516424"
+      },
+      {
+        "file": "package.json",
+        "hash": "7923067237499386389",
+        "deps": [
+          "npm:@nestjs/common",
+          "npm:@nestjs/config",
+          "npm:@nestjs/core",
+          "npm:@nestjs/platform-express",
+          "npm:@nestjs/typeorm",
+          "npm:@zmotivat0r/o0",
+          "npm:axios",
+          "npm:class-transformer",
+          "npm:class-validator",
+          "npm:deepmerge",
+          "npm:mysql",
+          "npm:pluralize",
+          "npm:reflect-metadata",
+          "npm:request",
+          "npm:rxjs",
+          "npm:typeorm",
+          "npm:@faker-js/faker",
+          "npm:@nestjs/jwt",
+          "npm:@nestjs/schematics",
+          "npm:@nestjs/swagger",
+          "npm:@nestjs/testing",
+          "npm:@nx/eslint-plugin",
+          "npm:@nx/jest",
+          "npm:@nx/js",
+          "npm:@nx/linter",
+          "npm:@nx/nest",
+          "npm:@nx/node",
+          "npm:@nx/webpack",
+          "npm:@nx/workspace",
+          "npm:@types/jest",
+          "npm:@types/lodash",
+          "npm:@types/node",
+          "npm:@types/pluralize",
+          "npm:@types/qs",
+          "npm:@types/supertest",
+          "npm:@types/uuid",
+          "npm:@typescript-eslint/eslint-plugin",
+          "npm:@typescript-eslint/parser",
+          "npm:eslint",
+          "npm:eslint-config-prettier",
+          "npm:eslint-plugin-import",
+          "npm:jest",
+          "npm:jest-environment-node",
+          "npm:nx",
+          "npm:prettier",
+          "npm:supertest",
+          "npm:ts-jest",
+          "npm:ts-node",
+          "npm:tslib",
+          "npm:typescript",
+          "npm:verdaccio",
+          "crudx"
+        ]
+      },
+      {
+        "file": "packages/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "project.json",
+        "hash": "492151369475892290"
+      },
+      {
+        "file": "resource/nestkit-logo.jpeg",
+        "hash": "8602747044625995845"
+      },
+      {
+        "file": "serve.sh",
+        "hash": "3728728629269776403"
+      },
+      {
+        "file": "test-all.sh",
+        "hash": "8703543891368760102"
+      },
+      {
+        "file": "test.sh",
+        "hash": "8955288077077880902"
+      },
+      {
+        "file": "tools/scripts/publish.mjs",
+        "hash": "15998894455315381142",
+        "deps": [
+          "npm:child_process",
+          "npm:fs",
+          "npm:@nx/devkit"
+        ]
+      },
+      {
+        "file": "tools/tsconfig.tools.json",
+        "hash": "16088922570277978783"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "5086766018800339884"
+      },
+      {
+        "file": "yarn.lock",
+        "hash": "11426342011382006834"
+      }
+    ],
     "crudx-demo": [
       {
         "file": "packages/crudx/demo/crudx-demo/.eslintrc.json",
@@ -548,353 +759,6 @@
         "deps": [
           "npm:@nx/webpack"
         ]
-      }
-    ],
-    "crudx-swagger": [
-      {
-        "file": "packages/crudx-swagger/.eslintrc.json",
-        "hash": "16896711999632553762"
-      },
-      {
-        "file": "packages/crudx-swagger/.npmignore",
-        "hash": "9768833237861077495"
-      },
-      {
-        "file": "packages/crudx-swagger/AUTHOR",
-        "hash": "10417665512109298312"
-      },
-      {
-        "file": "packages/crudx-swagger/CHANGELOG.md",
-        "hash": "10081343034610146807"
-      },
-      {
-        "file": "packages/crudx-swagger/LICENSE",
-        "hash": "15505546812316662841"
-      },
-      {
-        "file": "packages/crudx-swagger/README.md",
-        "hash": "11604154483213164019"
-      },
-      {
-        "file": "packages/crudx-swagger/jest.config.ts",
-        "hash": "7345675554435902810"
-      },
-      {
-        "file": "packages/crudx-swagger/package.json",
-        "hash": "7724814825780731925",
-        "deps": [
-          "npm:tslib",
-          "crudx",
-          "npm:@nestjs/common",
-          "npm:@nestjs/swagger",
-          "npm:lodash",
-          "npm:supertest",
-          "npm:@types/uuid"
-        ]
-      },
-      {
-        "file": "packages/crudx-swagger/project.json",
-        "hash": "12040042275691832709"
-      },
-      {
-        "file": "packages/crudx-swagger/src/index.ts",
-        "hash": "13643868832166523078"
-      },
-      {
-        "file": "packages/crudx-swagger/src/lib/index.ts",
-        "hash": "7462263340973872399"
-      },
-      {
-        "file": "packages/crudx-swagger/src/lib/swagger.helper.ts",
-        "hash": "1141440701550817908",
-        "deps": [
-          "crudx",
-          "npm:@nestjs/common",
-          "npm:@nestjs/swagger",
-          "npm:lodash",
-          "npm:pluralize"
-        ]
-      },
-      {
-        "file": "packages/crudx-swagger/src/services/crudx.swagger.routes.factory.ts",
-        "hash": "10980932562821043399",
-        "deps": [
-          "crudx",
-          "npm:lodash"
-        ]
-      },
-      {
-        "file": "packages/crudx-swagger/src/services/index.ts",
-        "hash": "1364221214457186380"
-      },
-      {
-        "file": "packages/crudx-swagger/tests/__fixtures__/base.model.ts",
-        "hash": "8604522175619500788",
-        "deps": [
-          "npm:@nestjs/swagger",
-          "npm:typeorm"
-        ]
-      },
-      {
-        "file": "packages/crudx-swagger/tests/__fixtures__/base.module.ts",
-        "hash": "7807538380404067774",
-        "deps": [
-          "npm:@nestjs/common",
-          "npm:@nestjs/config",
-          "npm:@nestjs/typeorm"
-        ]
-      },
-      {
-        "file": "packages/crudx-swagger/tests/__fixtures__/base.service.ts",
-        "hash": "3109646699329119847",
-        "deps": [
-          "crudx",
-          "npm:@nestjs/common",
-          "npm:@nestjs/typeorm"
-        ]
-      },
-      {
-        "file": "packages/crudx-swagger/tests/__fixtures__/database.config.ts",
-        "hash": "17808833653022833331",
-        "deps": [
-          "npm:@nestjs/config"
-        ]
-      },
-      {
-        "file": "packages/crudx-swagger/tests/crudx-swagger.spec.ts",
-        "hash": "9261992508502474918",
-        "deps": [
-          "crudx",
-          "npm:@nestjs/common",
-          "npm:@nestjs/swagger",
-          "npm:@nestjs/testing",
-          "npm:class-validator",
-          "npm:lodash",
-          "npm:supertest"
-        ]
-      },
-      {
-        "file": "packages/crudx-swagger/tsconfig.json",
-        "hash": "5840880287502376438"
-      },
-      {
-        "file": "packages/crudx-swagger/tsconfig.lib.json",
-        "hash": "3550173832616418300"
-      },
-      {
-        "file": "packages/crudx-swagger/tsconfig.spec.json",
-        "hash": "11550347367511341917"
-      }
-    ],
-    "@nest-kit/source": [
-      {
-        "file": ".all-contributorsrc",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": ".editorconfig",
-        "hash": "5443105041930014821"
-      },
-      {
-        "file": ".env.docker.example",
-        "hash": "3904083697395928954"
-      },
-      {
-        "file": ".env.example",
-        "hash": "12804018129142812533"
-      },
-      {
-        "file": ".env.testing",
-        "hash": "3904083697395928954"
-      },
-      {
-        "file": ".eslintignore",
-        "hash": "7663861978715868291"
-      },
-      {
-        "file": ".eslintrc.json",
-        "hash": "15299346859160131793"
-      },
-      {
-        "file": ".github/workflows/unit.yml",
-        "hash": "16309062679692272501"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "11799024793684374609"
-      },
-      {
-        "file": ".npmignore",
-        "hash": "11799024793684374609"
-      },
-      {
-        "file": ".pretierignore",
-        "hash": "7062417114858279524"
-      },
-      {
-        "file": ".prettierignore",
-        "hash": "8865097869854018350"
-      },
-      {
-        "file": ".prettierrc",
-        "hash": "15753941481085060538"
-      },
-      {
-        "file": ".verdaccio/config.yml",
-        "hash": "3445400987408887114"
-      },
-      {
-        "file": ".yarn/releases/yarn-1.22.19.cjs",
-        "hash": "17226688287211478531"
-      },
-      {
-        "file": ".yarnrc",
-        "hash": "6414922622098367488"
-      },
-      {
-        "file": "CONTRIBUTING.md",
-        "hash": "16062194028782084971"
-      },
-      {
-        "file": "LICENSE",
-        "hash": "12823936132319119988"
-      },
-      {
-        "file": "README.md",
-        "hash": "7598864217358290861"
-      },
-      {
-        "file": "docker-compose.yml",
-        "hash": "16820747357368207960"
-      },
-      {
-        "file": "jest.config.ts",
-        "hash": "2392540309333994723",
-        "deps": [
-          "npm:@nx/jest"
-        ]
-      },
-      {
-        "file": "jest.preset.js",
-        "hash": "14932722313705501266",
-        "deps": [
-          "npm:@nx/jest"
-        ]
-      },
-      {
-        "file": "jsconfig.json",
-        "hash": "18390160540452569316"
-      },
-      {
-        "file": "nest-kit.code-workspace",
-        "hash": "4850645847513818551"
-      },
-      {
-        "file": "nx.json",
-        "hash": "16681682195680516424"
-      },
-      {
-        "file": "package.json",
-        "hash": "7923067237499386389",
-        "deps": [
-          "npm:@nestjs/common",
-          "npm:@nestjs/config",
-          "npm:@nestjs/core",
-          "npm:@nestjs/platform-express",
-          "npm:@nestjs/typeorm",
-          "npm:@zmotivat0r/o0",
-          "npm:axios",
-          "npm:class-transformer",
-          "npm:class-validator",
-          "npm:deepmerge",
-          "npm:mysql",
-          "npm:pluralize",
-          "npm:reflect-metadata",
-          "npm:request",
-          "npm:rxjs",
-          "npm:typeorm",
-          "npm:@faker-js/faker",
-          "npm:@nestjs/jwt",
-          "npm:@nestjs/schematics",
-          "npm:@nestjs/swagger",
-          "npm:@nestjs/testing",
-          "npm:@nx/eslint-plugin",
-          "npm:@nx/jest",
-          "npm:@nx/js",
-          "npm:@nx/linter",
-          "npm:@nx/nest",
-          "npm:@nx/node",
-          "npm:@nx/webpack",
-          "npm:@nx/workspace",
-          "npm:@types/jest",
-          "npm:@types/lodash",
-          "npm:@types/node",
-          "npm:@types/pluralize",
-          "npm:@types/qs",
-          "npm:@types/supertest",
-          "npm:@types/uuid",
-          "npm:@typescript-eslint/eslint-plugin",
-          "npm:@typescript-eslint/parser",
-          "npm:eslint",
-          "npm:eslint-config-prettier",
-          "npm:eslint-plugin-import",
-          "npm:jest",
-          "npm:jest-environment-node",
-          "npm:nx",
-          "npm:prettier",
-          "npm:supertest",
-          "npm:ts-jest",
-          "npm:ts-node",
-          "npm:tslib",
-          "npm:typescript",
-          "npm:verdaccio",
-          "crudx"
-        ]
-      },
-      {
-        "file": "packages/.gitkeep",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": "project.json",
-        "hash": "492151369475892290"
-      },
-      {
-        "file": "resource/nestkit-logo.jpeg",
-        "hash": "8602747044625995845"
-      },
-      {
-        "file": "serve.sh",
-        "hash": "3728728629269776403"
-      },
-      {
-        "file": "test-all.sh",
-        "hash": "8703543891368760102"
-      },
-      {
-        "file": "test.sh",
-        "hash": "8955288077077880902"
-      },
-      {
-        "file": "tools/scripts/publish.mjs",
-        "hash": "15998894455315381142",
-        "deps": [
-          "npm:child_process",
-          "npm:fs",
-          "npm:@nx/devkit"
-        ]
-      },
-      {
-        "file": "tools/tsconfig.tools.json",
-        "hash": "16088922570277978783"
-      },
-      {
-        "file": "tsconfig.base.json",
-        "hash": "5086766018800339884"
-      },
-      {
-        "file": "yarn.lock",
-        "hash": "11426342011382006834"
       }
     ],
     "crudx": [
@@ -1510,6 +1374,142 @@
       },
       {
         "file": "packages/crudx/tsconfig.spec.json",
+        "hash": "11550347367511341917"
+      }
+    ],
+    "crudx-swagger": [
+      {
+        "file": "packages/crudx-swagger/.eslintrc.json",
+        "hash": "16896711999632553762"
+      },
+      {
+        "file": "packages/crudx-swagger/.npmignore",
+        "hash": "9768833237861077495"
+      },
+      {
+        "file": "packages/crudx-swagger/AUTHOR",
+        "hash": "10417665512109298312"
+      },
+      {
+        "file": "packages/crudx-swagger/CHANGELOG.md",
+        "hash": "10081343034610146807"
+      },
+      {
+        "file": "packages/crudx-swagger/LICENSE",
+        "hash": "15505546812316662841"
+      },
+      {
+        "file": "packages/crudx-swagger/README.md",
+        "hash": "11604154483213164019"
+      },
+      {
+        "file": "packages/crudx-swagger/jest.config.ts",
+        "hash": "7345675554435902810"
+      },
+      {
+        "file": "packages/crudx-swagger/package.json",
+        "hash": "7724814825780731925",
+        "deps": [
+          "npm:tslib",
+          "crudx",
+          "npm:@nestjs/common",
+          "npm:@nestjs/swagger",
+          "npm:lodash",
+          "npm:supertest",
+          "npm:@types/uuid"
+        ]
+      },
+      {
+        "file": "packages/crudx-swagger/project.json",
+        "hash": "12040042275691832709"
+      },
+      {
+        "file": "packages/crudx-swagger/src/index.ts",
+        "hash": "13643868832166523078"
+      },
+      {
+        "file": "packages/crudx-swagger/src/lib/index.ts",
+        "hash": "7462263340973872399"
+      },
+      {
+        "file": "packages/crudx-swagger/src/lib/swagger.helper.ts",
+        "hash": "1141440701550817908",
+        "deps": [
+          "crudx",
+          "npm:@nestjs/common",
+          "npm:@nestjs/swagger",
+          "npm:lodash",
+          "npm:pluralize"
+        ]
+      },
+      {
+        "file": "packages/crudx-swagger/src/services/crudx.swagger.routes.factory.ts",
+        "hash": "10980932562821043399",
+        "deps": [
+          "crudx",
+          "npm:lodash"
+        ]
+      },
+      {
+        "file": "packages/crudx-swagger/src/services/index.ts",
+        "hash": "1364221214457186380"
+      },
+      {
+        "file": "packages/crudx-swagger/tests/__fixtures__/base.model.ts",
+        "hash": "8604522175619500788",
+        "deps": [
+          "npm:@nestjs/swagger",
+          "npm:typeorm"
+        ]
+      },
+      {
+        "file": "packages/crudx-swagger/tests/__fixtures__/base.module.ts",
+        "hash": "7807538380404067774",
+        "deps": [
+          "npm:@nestjs/common",
+          "npm:@nestjs/config",
+          "npm:@nestjs/typeorm"
+        ]
+      },
+      {
+        "file": "packages/crudx-swagger/tests/__fixtures__/base.service.ts",
+        "hash": "3109646699329119847",
+        "deps": [
+          "crudx",
+          "npm:@nestjs/common",
+          "npm:@nestjs/typeorm"
+        ]
+      },
+      {
+        "file": "packages/crudx-swagger/tests/__fixtures__/database.config.ts",
+        "hash": "17808833653022833331",
+        "deps": [
+          "npm:@nestjs/config"
+        ]
+      },
+      {
+        "file": "packages/crudx-swagger/tests/crudx-swagger.spec.ts",
+        "hash": "9261992508502474918",
+        "deps": [
+          "crudx",
+          "npm:@nestjs/common",
+          "npm:@nestjs/swagger",
+          "npm:@nestjs/testing",
+          "npm:class-validator",
+          "npm:lodash",
+          "npm:supertest"
+        ]
+      },
+      {
+        "file": "packages/crudx-swagger/tsconfig.json",
+        "hash": "5840880287502376438"
+      },
+      {
+        "file": "packages/crudx-swagger/tsconfig.lib.json",
+        "hash": "3550173832616418300"
+      },
+      {
+        "file": "packages/crudx-swagger/tsconfig.spec.json",
         "hash": "11550347367511341917"
       }
     ],
