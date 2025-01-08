@@ -1,6 +1,9 @@
 {
   "name": "@2amtech/crudx-swagger",
   "author": "Antonio Ramirez Cobos <hola@2amigos.us> (https://2am.tech/)",
+  "repository": {
+    "url": "https://github.com/2amigos/nest-kit"
+  },
   "contributors": [
     {
       "name": "Jonatas Souza",

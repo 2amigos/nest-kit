@@ -3,6 +3,9 @@
   "author": "2am.tech",
   "version": "1.0.3",
   "license": "MIT",
+  "repository": {
+    "url": "https://github.com/2amigos/nest-kit"
+  },
   "scripts": {
     "build-npm": "nx run-many -t build-npm",
     "publish-all": "nx run-many -t publish",
