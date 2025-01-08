@@ -15,7 +15,7 @@
     }
   ],
   "description": "NestJs package to apply swagger meta-data into routes generated with @2amtech/crudx package",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "dependencies": {
     "tslib": "^2.3.0",
     "@2amtech/crudx": "1.0.0",
