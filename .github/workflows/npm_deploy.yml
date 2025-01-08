@@ -16,6 +16,9 @@ jobs:
       id-token: write
     timeout-minutes: 10
     steps:
+      - name: Run Unit Tests
+        uses: ./.github/workflows/unit.yml
+
       - name: Checkout reqpo
         uses: actions/checkout@v4
         with: 

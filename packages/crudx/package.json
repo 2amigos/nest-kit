@@ -1,6 +1,9 @@
 {
   "name": "@2amtech/crudx",
   "author": "Antonio Ramirez Cobos <hola@2amigos.us> (https://2am.tech/)",
+  "repository": {
+    "url": "https://github.com/2amigos/nest-kit"
+  },
   "contributors": [
     {
       "name": "Jonatas Souza",
@@ -12,7 +15,7 @@
     }
   ],
   "description": "NestJs CRUD for RESTful APIs - request query builder",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "dependencies": {
     "tslib": "^2.3.0",
     "@nestjs/common": "^10.1.3",

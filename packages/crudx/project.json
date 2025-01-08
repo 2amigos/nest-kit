@@ -46,11 +46,6 @@
           "coverage": true
         }
       }
-    },
-    "nx": {
-      "targets": {
-        "nx-release-publish": {}
-      }
     }
   }
 }
