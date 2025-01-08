@@ -16,13 +16,13 @@ jobs:
       id-token: write
     timeout-minutes: 10
     steps:
-      - name: Run Unit Tests
-        uses: ./.github/workflows/unit.yml
-
-      - name: Checkout reqpo
+      - name: Checkout repo
         uses: actions/checkout@v4
         with: 
           fetch_depth: 0
+
+      - name: Run Unit Tests
+        uses: ./.github/workflows/unit.yml
       
       - name: Install Node
         uses: actions/setup-node@v4
