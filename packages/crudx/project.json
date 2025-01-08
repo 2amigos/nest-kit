@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/crudx/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
@@ -28,19 +29,8 @@
         ]
       }
     },
-    "publish": {
-      "command": "node tools/scripts/publish.mjs crudx",
-      "dependsOn": ["build-npm"]
-    },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": [
-          "packages/crudx/**/*.ts",
-          "packages/crudx/package.json"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",
@@ -48,18 +38,19 @@
       "options": {
         "runInBand": true,
         "jestConfig": "packages/crudx/jest.config.ts",
-        "passWithNoTests": true,
         "testPathPattern": ["tests/*"],
-        "codeCoverage":  true
+        "codeCoverage": true
       },
       "configurations": {
         "ci": {
-          "ci": true,
-          "codeCoverage": true,
           "coverage": true
         }
       }
+    },
+    "nx": {
+      "targets": {
+        "nx-release-publish": {}
+      }
     }
-  },
-  "tags": []
+  }
 }

@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/crudx-swagger/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
@@ -38,14 +39,7 @@
       "dependsOn": ["build-npm"]
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": [
-          "packages/crudx-swagger/**/*.ts",
-          "packages/crudx-swagger/package.json"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",
@@ -53,16 +47,8 @@
       "options": {
         "runInBand": true,
         "jestConfig": "packages/crudx-swagger/jest.config.ts",
-        "passWithNoTests": true,
         "testPathPattern": ["tests/*"]
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
       }
     }
-  },
-  "tags": []
+  }
 }

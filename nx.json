@@ -9,19 +9,45 @@
     }
   },
   "targetDefaults": {
+    "@nx/js:tsc": {
+      "inputs": ["production", "^production"],
+      "dependsOn": ["^build"],
+      "options": {
+        "main": "{projectRoot}/src/index.ts"
+      },
+      "cache": true
+    },
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "inputs": ["production", "^production"],
+      "cache": true
     },
-    "lint": {
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/packages/{projectName}"
+      },
+      "dependsOn": ["build"]
+    },
+    "@nx/jest:jest": {
+      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
+      "cache": true,
+      "options": {
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "@nx/eslint:lint": {
       "inputs": [
         "default",
         "{workspaceRoot}/.eslintrc.json",
         "{workspaceRoot}/.eslintignore"
-      ]
-    },
-    "test": {
-      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
+      ],
+      "cache": true
     }
   },
   "namedInputs": {
@@ -40,5 +66,8 @@
   "workspaceLayout": {
     "appsDir": "packages",
     "libsDir": "packages"
+  },
+  "release": {
+    "projects": ["*"]
   }
 }
