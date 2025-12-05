@@ -21,7 +21,7 @@ jobs:
         run: docker ps
 
       - name: Run unit tests
-        run: ./test-all.sh
+        run: docker compose exec -it 2am-nestkit /bin/sh test-all.sh
 
       - name: Check coverage if files exists
         run: (ls ./coverage/packages/${{ matrix.PROJECT_NAME }}/clover.xml && echo yes) || echo no
