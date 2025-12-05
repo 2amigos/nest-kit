@@ -20,6 +20,19 @@ jobs:
       - name: Check running containers
         run: docker ps
 
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node_version: 20.17.0
+          registry-url: https://registry.npmjs.org/
+      
+      - name: Install Dependencies
+        run: |
+          npm install -g yarn
+          yarn install --frozen-lockfile
+        shell: bash
+
+
       - name: Run unit tests
         run: docker compose exec -it 2am-nestkit /bin/sh test-all.sh
 
