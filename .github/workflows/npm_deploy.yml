@@ -5,11 +5,11 @@ on:
     types: [published]
 
 permissions:
-    contents: read
+  contents: read
 
 jobs:
   publish:
-    name: NPM Publish 
+    name: NPM Publish
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -18,22 +18,24 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-        with: 
+        with:
           fetch_depth: 0
 
       - name: Install Node
         uses: actions/setup-node@v4
-        with: 
+        with:
           node_version: 20
           registry-url: https://registry.npmjs.org/
 
       - name: Install Dependencies
-        run: npm install
+        run: |
+          npm install -g yarn
+          yarn install --frozen-lockfile
         shell: bash
 
       - name: Publish packages
         run: npx nx release publish
         shell: bash
-        env: 
+        env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_DEPLOY_TOKEN }}
           NPM_CONFIG_PROVENANCE: true

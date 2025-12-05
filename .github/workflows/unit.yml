@@ -3,7 +3,6 @@ on: [push]
 
 jobs:
   test:
-  
     strategy:
       matrix:
         PROJECT_NAME: [crudx]
@@ -17,11 +16,6 @@ jobs:
 
       - name: Build the Docker image
         run: docker compose up -d
-
-      - name: Sleep
-        uses: jakejarvis/wait-action@master
-        with:
-          time: '60s'
 
       - name: Check running containers
         run: docker ps
