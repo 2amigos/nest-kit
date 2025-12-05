@@ -34,7 +34,7 @@ const BASE_QUERY_FILTER_SAVE = "/crud-options-test/:age/with-filter";
 })
 @Controller(BASE_CRUD_OPTIONS)
 class CrudOptionsController implements CrudController<UuidModel> {
-  constructor(public service: UuidService) {}
+  constructor(public service: UuidService) { }
 }
 
 @Crud({
@@ -56,7 +56,7 @@ class CrudOptionsController implements CrudController<UuidModel> {
 })
 @Controller(BASE_QUERY_FILTER_SAVE)
 class CrudQueryFilterController implements CrudController<UuidModel> {
-  constructor(public service: UuidService) {}
+  constructor(public service: UuidService) { }
 }
 
 describe("#QueryParser test", () => {
@@ -79,7 +79,7 @@ describe("#QueryParser test", () => {
   });
 
   afterAll(async () => {
-    await service.repo.delete({});
+    await service.repo.createQueryBuilder().delete().execute();
     await server.close();
     await app.close();
   });

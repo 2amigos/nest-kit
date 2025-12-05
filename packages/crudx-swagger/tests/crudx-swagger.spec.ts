@@ -34,7 +34,7 @@ CrudConfigService.load({
 })
 @Controller("/base/")
 class BaseController implements CrudController<Base> {
-  constructor(public service: BaseService) {}
+  constructor(public service: BaseService) { }
 }
 
 @Crud({
@@ -44,7 +44,7 @@ class BaseController implements CrudController<Base> {
 })
 @Controller("/override/")
 class OverideController implements CrudController<Base> {
-  constructor(public service: BaseService) {}
+  constructor(public service: BaseService) { }
 
   get base(): CrudController<Base> {
     return this;
@@ -97,7 +97,7 @@ describe("Crudx Swagger Test", () => {
   });
 
   afterAll(async () => {
-    await Base.delete({});
+    await Base.createQueryBuilder().delete().execute();
     await server.close();
     await app.close();
   });

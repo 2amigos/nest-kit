@@ -38,7 +38,7 @@ const BASE_AUTH_CONTROLLER_OBJECT = "/intercept-auth-object/";
 })
 @Controller(BASE_CONTROLLER)
 class CrudNoOptionsControllerTest implements CrudController<TestingModel> {
-  constructor(public service: TestingService) {}
+  constructor(public service: TestingService) { }
 }
 
 // dummy interceptor to simulate auth
@@ -77,7 +77,7 @@ class BaseGuard implements CanActivate {
 @Controller(BASE_AUTH_CONTROLLER)
 @UseGuards(BaseGuard)
 class CrudAuthInterceptorTest implements CrudController<TestingModel> {
-  constructor(public service: TestingService) {}
+  constructor(public service: TestingService) { }
 }
 
 // dummy interceptor to simulate auth with object exposed
@@ -113,9 +113,8 @@ class BaseObjectGuard implements CanActivate {
 @Controller(BASE_AUTH_CONTROLLER_OBJECT)
 @UseGuards(BaseObjectGuard)
 class CrudAuthInterceptorObjectAuthTest
-  implements CrudController<TestingModel>
-{
-  constructor(public service: TestingService) {}
+  implements CrudController<TestingModel> {
+  constructor(public service: TestingService) { }
 }
 
 describe("Crud Decorators #with empty options Test", () => {
@@ -138,7 +137,7 @@ describe("Crud Decorators #with empty options Test", () => {
     await app.init();
 
     server = app.getHttpServer();
-    await TestingModel.delete({});
+    await TestingModel.createQueryBuilder().delete().execute();
 
     await TestingModel.create({
       firstName: "fn 1",
@@ -157,7 +156,7 @@ describe("Crud Decorators #with empty options Test", () => {
   });
 
   afterAll(async () => {
-    await TestingModel.delete({});
+    await TestingModel.createQueryBuilder().delete().execute();
     await server.close();
     await app.close();
   });

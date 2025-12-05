@@ -78,7 +78,7 @@ class WithDatesDto {
 })
 @Controller(CONTROLLER_NAME)
 class QueryBuilderSearchTestController implements CrudController<TestingModel> {
-  constructor(public service: TestingService) {}
+  constructor(public service: TestingService) { }
 }
 
 @Crud({
@@ -96,9 +96,8 @@ class QueryBuilderSearchTestController implements CrudController<TestingModel> {
 })
 @Controller(CONTROLLER_NOT_JOIN)
 class QueryBuilderWithoutAllowedJoinController
-  implements CrudController<TestingModel>
-{
-  constructor(public service: TestingService) {}
+  implements CrudController<TestingModel> {
+  constructor(public service: TestingService) { }
 }
 
 describe("TypeORMCrudService Query Builders Search Test", () => {
@@ -127,18 +126,18 @@ describe("TypeORMCrudService Query Builders Search Test", () => {
   });
 
   afterAll(async () => {
-    await Nested.delete({});
-    await relationTestService.repo.delete({});
-    await service.repo.delete({});
+    await Nested.createQueryBuilder().delete().execute();
+    await relationTestService.repo.createQueryBuilder().delete().execute();
+    await service.repo.createQueryBuilder().delete().execute();
 
     await server.close();
     await app.close();
   });
 
   it("Cleanup database and create entities", async () => {
-    await Nested.delete({});
-    await relationTestService.repo.delete({});
-    await service.repo.delete({});
+    await Nested.createQueryBuilder().delete().execute();
+    await relationTestService.repo.createQueryBuilder().delete().execute();
+    await service.repo.createQueryBuilder().delete().execute();
 
     const samples1 = [0, 1, 2, 3, 4];
     const samples2 = [99, 100];

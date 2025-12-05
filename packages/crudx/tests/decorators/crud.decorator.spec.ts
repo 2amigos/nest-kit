@@ -40,7 +40,7 @@ const BASE_EXCLUDE_CONTROLLER = "/test-exclude-routes/";
 })
 @Controller(BASE_CRUD_URL)
 class CrudBaseControllerTest implements CrudController<TestingModel> {
-  constructor(public service: TestingService) {}
+  constructor(public service: TestingService) { }
 }
 
 @CrudAuth({
@@ -68,7 +68,7 @@ class CrudBaseControllerTest implements CrudController<TestingModel> {
 @UseGuards(ACLGuard)
 @Controller(AUTH_CRUD_URL)
 class CrudAuthControllerTest implements CrudController<TestingModel> {
-  constructor(public service: TestingService) {}
+  constructor(public service: TestingService) { }
 }
 
 @Crud({
@@ -79,7 +79,7 @@ class CrudAuthControllerTest implements CrudController<TestingModel> {
 @UseGuards(ACLGuard)
 @Controller(GUARD_CONTROLLER)
 class CrudGuardControllerTest implements CrudController<TestingModel> {
-  constructor(public service: TestingService) {}
+  constructor(public service: TestingService) { }
 }
 
 interface WithExtraProp extends TestingModel {
@@ -96,7 +96,7 @@ interface WithExtraProp extends TestingModel {
 })
 @Controller(OVERRIDE_CRUD_URL)
 class CrudOverrideControllerTest implements CrudController<TestingModel> {
-  constructor(public service: TestingService) {}
+  constructor(public service: TestingService) { }
 
   get base(): CrudController<TestingModel> {
     return this;
@@ -158,7 +158,7 @@ class CrudOverrideControllerTest implements CrudController<TestingModel> {
 })
 @Controller(BASE_EXCLUDE_CONTROLLER)
 class CrudExcludeRouteControllerTest implements CrudController<TestingModel> {
-  constructor(public service: TestingService) {}
+  constructor(public service: TestingService) { }
 
   get base(): CrudController<TestingModel> {
     return this;
@@ -196,7 +196,7 @@ describe("Crud Decorators Test", () => {
   });
 
   afterAll(async () => {
-    await TestingModel.delete({});
+    await TestingModel.createQueryBuilder().delete().execute();
     await server.close();
     await app.close();
   });

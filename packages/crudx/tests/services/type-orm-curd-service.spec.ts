@@ -33,14 +33,14 @@ describe("Services - #TypeORMCrudService", () => {
   });
 
   afterAll(async () => {
-    await relationTestService.repo.delete({});
-    await service.repo.delete({});
+    await relationTestService.repo.createQueryBuilder().delete().execute();
+    await service.repo.createQueryBuilder().delete().execute();
     await module.close();
   });
 
   it("Should clear database", async () => {
-    await relationTestService.repo.delete({});
-    await service.repo.delete({});
+    await relationTestService.repo.createQueryBuilder().delete().execute();
+    await service.repo.createQueryBuilder().delete().execute();
   });
 
   it("Should create a new record", async () => {
@@ -112,7 +112,7 @@ describe("Services - #TypeORMCrudService", () => {
   });
 
   it("Should create with return shallow and total entities count", async () => {
-    await service.repo.delete({});
+    await service.repo.createQueryBuilder().delete().execute();
 
     await service.repo
       .create({

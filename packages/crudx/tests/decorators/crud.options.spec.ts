@@ -56,7 +56,7 @@ const BASE_CRUD_SERIALIZE = "/crud-options-serialize/";
 })
 @Controller(BASE_CRUD_OPTIONS)
 export class CrudOptionsController implements CrudController<TestingModel> {
-  constructor(public service: TestingService) {}
+  constructor(public service: TestingService) { }
 }
 
 @Crud({
@@ -79,9 +79,8 @@ export class CrudOptionsController implements CrudController<TestingModel> {
 })
 @Controller(BASE_CRUD_PARSED)
 export class CrudOptionsWithQueryParserTest
-  implements CrudController<TestingModel>
-{
-  constructor(public service: TestingService) {}
+  implements CrudController<TestingModel> {
+  constructor(public service: TestingService) { }
 }
 
 class BaseModelDto {
@@ -112,9 +111,8 @@ class BaseModelDto {
 })
 @Controller(BASE_CRUD_SERIALIZE)
 export class CrudOptionsWithSerializeTest
-  implements CrudController<TestingModel>
-{
-  constructor(public service: TestingService) {}
+  implements CrudController<TestingModel> {
+  constructor(public service: TestingService) { }
 }
 
 describe("Crud Decorators Test", () => {
@@ -143,8 +141,8 @@ describe("Crud Decorators Test", () => {
   });
 
   afterAll(async () => {
-    await relationTestService.repo.delete({});
-    await service.repo.delete({});
+    await relationTestService.repo.createQueryBuilder().delete().execute();
+    await service.repo.createQueryBuilder().delete().execute();
     await server.close();
     await app.close();
   });
