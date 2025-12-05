@@ -14,7 +14,7 @@ services:
       app-mysql:
         condition: service_healthy
     command: >
-      bash -c "cp .env.docker.example .env.testing && yarn install --frozen-lockfile && yarn install -g @nestjs/cli && tail -f /dev/null"
+      bash -c "cp .env.docker.example .env.testing && yarn install --frozen-lockfile && yarn global add @nestjs/cli && tail -f /dev/null"
     tty: true
     restart: none
     ports:
