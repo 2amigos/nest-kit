@@ -15,7 +15,7 @@
     }
   ],
   "description": "NestJs CRUD for RESTful APIs - request query builder",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "dependencies": {
     "tslib": "^2.3.0",
     "@nestjs/common": "^10.4.15",
